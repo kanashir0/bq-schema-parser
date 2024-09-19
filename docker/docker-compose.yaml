@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  mysqldb:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: dbpass
+      MYSQL_DATABASE: etl_batch
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./mysqldb-data:/var/lib/mysql:rw"
+
+  pgdb:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dbpass
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./pgdb-data:/var/lib/postgresql/data:rw"
